@@ -12,15 +12,6 @@ var CharCollection = Backbone.Collection.extend({
     return data.results;
   }
 
-  // loading: function(){
-  //   CharCollection.on('request', function(){
-  //     $('.load-button').text('Loading');
-  //   });
-  //   CharCollection.on('sync', function(){
-  //     $('.load-button').append(charNames());
-  //   });
-  //
-  //   };
 
 });
 

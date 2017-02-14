@@ -10,17 +10,19 @@ var button = $('.load-button');
 button.on('click', function(){
     character.fetch();
 
-    character.on('request', function(){
-      $('.load-button').text('Loading');
-    });
-    character.on('sync', function(char){
-      character.forEach(function(char){
-        char.get('name');
-        $('.load-button').text('Submit');
-      })
-      $('.character-list').append(charNames(char));
-    });
+});
 
+character.on('request', function(){
+  $('.load-button').text('Loading');
+});
+
+character.on('sync', function(){
+  character.models.forEach(function(char){
+    char.get('name');
+    $('.character-list').append(charNames(char));
+  })
+
+  $('.load-button').text('Submit');
 });
 
 // character.fetch();
