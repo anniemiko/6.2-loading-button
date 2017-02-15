@@ -7,7 +7,7 @@ var Post = Backbone.Model.extend({
 
 var PostCollection = Backbone.Collection.extend({
   model: Post,
-  url: 'http://tiny-lasagna-server.herokuapp.com/collections/posts',
+  url: 'https://tiny-lasagna-server.herokuapp.com/collections/posts',
   parse: function(data){
     return data.results;
   }
