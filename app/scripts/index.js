@@ -1,28 +1,28 @@
 var $ = require('jquery');
-var CharCollection = require('../scripts/models/characters.js').CharCollection;
-var charNames = require('../templates/char-names.hbs');
+var PostCollection = require('../scripts/models/model.js').PostCollection;
+var postEntry = require('../templates/post-entry.hbs');
 
-var character = new CharCollection();
+var allPosts = new PostCollection();
 
 var button = $('.load-button');
+var submitButton = $('.submit-button');
 
+$('form-group').append(submitButton());
 
 button.on('click', function(){
-    character.fetch();
+    allPosts.fetch();
 
 });
 
-character.on('request', function(){
+allPosts.on('request', function(){
   $('.load-button').text('Loading');
 });
 
-character.on('sync', function(){
-  character.models.forEach(function(char){
-    char.get('name');
-    $('.character-list').append(charNames(char));
+allPosts.on('sync', function(){
+  allPosts.models.forEach(function(post){
+    post.get('title', 'body');
+    $('.posts').append(postEntry(post.toJSON()));
   })
 
   $('.load-button').text('Submit');
 });
-
-// character.fetch();
